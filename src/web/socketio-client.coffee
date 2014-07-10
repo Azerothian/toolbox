@@ -1,10 +1,8 @@
 Promise = require "bluebird"
 io = require "socket.io-client"
+{log, uuid} = require "../util"
 
-tbxutil = require "./util"
-{log} = tbxutil
-
-class SiocClient
+class Client
   @scope: "singleton"
   constructor: (@onReady) ->
     @connected = false
@@ -19,15 +17,14 @@ class SiocClient
 
   emit: (event, args...) =>
     return new Promise (resolve, reject) =>
-      id = "#{tbxutil.uuid()}"
+      id = uuid()
       hook = () =>
         #log "emit commit"
         @socket.off id, hook
         resolve.apply undefined, arguments
       #log "emit on", id
       @socket.on id, hook
-      #log "emit", event, { id: id, args: args }
       @socket.emit event, { id: id, args: args }
 
 
-module.exports = Sioc
+module.exports = Client
