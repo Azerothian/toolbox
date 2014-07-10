@@ -1,9 +1,10 @@
-{log, argsToArray} = require "./util"
+{log, argsToArray} = require "../util"
 
 express = require "express"
 http = require "http"
 socketio = require "socket.io"
 bodyParser = require "body-parser"
+Promise = require "bluebird"
 
 # TODO: add session management
 
@@ -13,9 +14,10 @@ class Server
     @expressApp = express()
     @httpServer = http.createServer @expressApp
     @io = socketio @httpServer
-    
+
     #expose express's use func? not sure if this will work without using apply!?
-    @use = @expressApp.use
+    @use = () =>
+      @expressApp.use.apply @expressApp, arguments
     @use bodyParser.json()
     @use bodyParser.urlencoded { extended: true }
 

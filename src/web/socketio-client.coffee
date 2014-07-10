@@ -7,7 +7,7 @@ class Client
   constructor: (@onReady) ->
     @connected = false
 
-  listen: (address = "http://127.0.0.1:4011/") =>
+  listen: (address = "http://127.0.0.1:2122/") =>
     return new Promise (resolve, reject) =>
       @socket = io.connect address
       @socket.on "connect", () =>

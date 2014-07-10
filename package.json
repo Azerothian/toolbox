@@ -2,11 +2,18 @@
   "name": "local-toolbox",
   "version": "0.0.0",
   "description": "toolbox\r =======",
-  "main": "build/index.js",
+  "main": "index.js",
   "files": [
-    "build",
-    "build/mixins",
-    "build/web"
+    "mixins/",
+    "web/",
+    "boxed.js",
+    "cache.js",
+    "chains.js",
+    "config.js",
+    "index.js",
+    "injector.js",
+    "reactui.js",
+    "util.js"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -34,6 +41,7 @@
     "body-parser": "^1.4.3",
     "bookshelf": "^0.7.6",
     "checkit": "^0.2.0-pre",
+    "cson-safe": "^0.1.1",
     "envify": "^1.2.1",
     "express": "^4.5.1",
     "knex": "^0.6.20",
