@@ -2,7 +2,7 @@ React = require "react"
 
 if window?
   window.React = React
-React.initializeTouchEvents true
+  React.initializeTouchEvents true
 
 
 {div} = React.DOM
@@ -10,7 +10,6 @@ React.initializeTouchEvents true
 class ReactUI
   @scope: "singleton"
   constructor: () ->
-    console.log "CREATE REACTUI"
     @components = {}
 
   add: (name, component) =>
@@ -25,7 +24,7 @@ class ReactUI
       delete @components[name]
     @update()
 
-  @getBaseReact: (manager) =>
+  @getBaseReact: (manager) ->
     return React.createClass {
       render: ->
         args = [{ className: "row" }]
